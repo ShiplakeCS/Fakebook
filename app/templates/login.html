@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Sign in to Fakebook</h1>
+    <form action="/login" method="post">
+        Email address:<br>
+        <input type="email" name="email" required><br>
+        Password:<br>
+        <input type="password" name="password" required><br>
+        <input type="submit" value="Login"><br>
+        <a href="#">I forgot my password</a>
+    </form>
+
+    <h2>Not yet registered for Fakebook?</h2>
+    <a href="/register">Register for your Fakebook account now!</a>
+{% endblock %}

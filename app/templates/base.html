@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fakebook{% if title %} - {{ title }}{% endif %}</title>
+</head>
+<body>
+{% if not no_nav_bar %}
+    <div>
+        Fakebook
+        <a href="{{ url_for("index") }}">Home</a>
+        {% if user %}
+            <a href="{{ url_for("logout") }}">Sign out</a>
+        {% else %}
+            <a href="{{ url_for("login") }}">Sign in</a>
+        {% endif %}
+    </div>
+
+    <hr>
+{% endif %}
+<!-- Show any flashed messages that are waiting to be shown -->
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <div class="flashed-messages">
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% endwith %}
+
+{% block content %}{% endblock %}
+</body>
+</html>

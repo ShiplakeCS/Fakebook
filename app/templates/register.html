@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Register for Fakebook</h1>
+    <p>Please provide the following details to register for your Fakebook account.</p>
+    <form action="/register" method="post" enctype="multipart/form-data">
+        <div class="form-section">
+            <h2>Let's start with your login details</h2>
+            Your email address:<br>
+            <input type="email" name="email" {% if formdata %}value="{{ formdata.email }}"{% endif %}required><br>
+            <i>You will use this to login</i><br><br>
+            Please choose a username:<br>
+            <input type="text" name="username" {% if formdata %}value="{{ formdata.username }}"{% endif %}required><br>
+            <i>This will be used as your Fakebook 'handle' to identify you with a short name in posts and
+                messages.</i><br><br>
+            Enter a password:<br>
+            <input type="password" name="password" required><br><br>
+            Please confirm your password:<br>
+            <input type="password" name="password_confirmation" required><br>
+        </div>
+        <div class="form-section">
+            <h2>Now tell us a little more about yourself</h2>
+            <i>We will only share these details with your confirmed friends.</i><br>
+            Your first name:<br>
+            <input type="text" name="first_name" {% if formdata %}value="{{ formdata.first_name }}"{% endif %}required><br><br>
+            Your surname:<br>
+            <input type="text" name="surname" {% if formdata %}value="{{ formdata.surname }}"{% endif %}required><br><br>
+            Your date of birth:<br>
+            <input type="date" name="dob" {% if formdata %}value="{{ formdata.dob }}"{% endif %}required><br><br>
+        </div>
+        <div class="form-section">
+            <h2>Finally, please provide a few details for others to see about you</h2>
+            Please provide a short bio to introduce yourself to other Fakebook users. This will appear on your public
+            profile page and in search results.<br>
+            <textarea rows="4" cols="50" name="bio" >{% if formdata %}{{ formdata.bio }}{% endif %}</textarea><br><br>
+            Please upload a profile picture so that people know what you look like:<br>
+            <input type="file" name="profile_pic" accept="image/*" value="Upload profile picture"><br><br>
+        </div>
+        <input type="submit" value="Register" class="btn-primary">
+        <input type="reset" value="Reset form"><br>
+        <a href="/">Cancel</a>
+    </form>
+
+{% endblock %}
